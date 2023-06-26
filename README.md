@@ -97,3 +97,322 @@ browser for performing automation testing.
 
 * Create a class and write the test script to perform automation testing using Selenium WebDriver
 
+#### Scripts
+
+**Scenario**: write a test script to launch the browser (chrome browser), maximize the window and navigate to amazon web page.
+
+**Code**:
+
+```java
+
+package Scripts;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		ChromeDriver driver = new ChromeDriver();
+		//maximizing the window
+		driver.manage().window().maximize();
+		//Navigating to amazon web page
+		driver.get("https://www.amazon.com/");
+	}
+
+}
+
+```
+##### Scripts 2
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Flipkart page and get the title of the page, minimize the window, make the window full screen, get the current URL for the web page and close the window
+
+**Code**:
+
+```java
+package Scripts;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		//maximizing the window
+		driver.manage().window().maximize();
+		//Navigating to flipkart web page
+		driver.get("https://www.flipkart.com/");
+		//getting the title of flipkart page
+		String title=driver.getTitle();
+		System.out.println("Title of flipkart page is:"+title);
+		//minimizing the window
+		driver.manage().window().minimize();
+		//full screen the window
+		driver.manage().window().fullscreen();
+		//Current Url of web page
+		System.out.println("the current url is:"+driver.getCurrentUrl());
+		//close the window
+		driver.close();
+		
+		
+	}
+
+}
+
+```
+
+**Output**: 
+
+![Automation-testing-process](images/TestScript2.png)
+
+
+##### Scripts 3
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Google page, get the actual title of the page and compare if the actual page is matching with the expected title, if the title is matching then print “Title is matching” if not print “Title is not matching”
+
+**Code**:
+
+```java
+package Scripts;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript3 {
+
+	public static void main(String[] args) {
+			//launching the browser
+			ChromeDriver driver = new ChromeDriver();
+			//maximizing the window
+			driver.manage().window().maximize();
+			//Navigating to google web page
+			driver.get("https://www.google.com/");
+			//getting the actual title of google page
+			String ActualTitle=driver.getTitle();
+			System.out.println("Title of google page is "+ ActualTitle);
+			String ExpectedTitle="Google";
+			//comparing actual title with expected title
+			if(ActualTitle.equals(ExpectedTitle))
+			{
+			System.out.println("Title is matching");
+			}
+			else
+			{
+			System.out.println("Title is not matching");
+			}
+			
+			
+	}
+
+}
+
+```
+
+
+**Output**: 
+
+![Automation-testing-process](images/TestScript3.png)
+
+## LOCATORS
+
+* A web page is a collection of different web elements like hyperlink/hypertext, radio button, search box, drop down box, text box, I-frame etc.
+* Selenium provides different locators to identify different web elements present in the web page, those are
+
+1. Id locator
+
+2. Name locator
+
+3. Class name locator
+
+4. Tag name locator 
+
+5. Link text locator 
+
+6. Partial link text locator 
+
+7. X-path locator 
+
+8. CSS selector locator.
+
+### Scripts
+
+**Scenario**:  write a test script to launch the browser (chrome browser), maximize the window, navigate to google page and click on Gmail link.
+
+**Code** :
+
+```java
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class TestScript1
+{
+public static void main (String [] args)
+{
+//launching the browser
+ChromeDriver driver = new ChromeDriver();
+//maximize the window
+driver.manage().window().maximize();
+//navigating to google page
+driver.get("https://www.google.com/");
+//locating gmail hyperlink/hypertext
+WebElement link = driver.findElement(By.linkText("Gmail"));
+//clicking on hyperlink
+link.click();
+}
+}
+
+```
+
+
+### Scripts 2
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Facebook page, click on “Contact uploading and non-users “hyper link and get the count of all the hyperlinks
+
+**Code** :
+
+```java
+package Locators;
+
+
+import java.util.Iterator;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		//maximize the window
+		driver.manage().window().maximize();
+		//navigating to facebook page
+		driver.get("https://www.facebook.com/");
+		//locating contact uploading and non-users using partialLinkText locator
+		WebElement link =driver.findElement(By.partialLinkText("uploading"));
+		//locating contact uploading and non-users using LinkText locator
+		WebElement links = driver.findElement(By.linkText("Contact uploading and non-users"));
+		//to fetch all the hyper links
+		List<WebElement> list_links= driver.findElements(By.tagName("a"));
+		//display the count of all the hyperlinks in list
+		System.out.println(list_links.size());
+		//clicking on hyperlink
+		link.click();
+
+	}
+
+}
+```
+**Output**:
+![Automation-testing-process](images/Locators-testscript2.png)
+
+
+### Scripts 3
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to Facebook page, click on “Contact uploading and non-users “hyper link, get the count of all the hyperlinks and display all the elements(hyperlinks) in the console
+
+
+**Code** :
+
+```java
+
+package Locators;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScripts3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		//maximize the window 
+		driver.manage().window().maximize();
+		//navigating to facebook page
+		driver.get("https://www.facebook.com/");
+		 //locating contact uploading and non-users using partialLinkText locator
+		WebElement link = driver.findElement(By.partialLinkText ("uploading"));
+		//locating contact uploading and non-users using linkText locator
+		//WebElement links = driver.findElement(By.linkText("Contact uploading and non-users"));
+		//to fetch all the hyper links
+		List<WebElement> list_links= driver.findElements(By.tagName("a"));
+		//display the count of all the hyperlinks in list
+		System.out.println(list_links.size());
+		//Traversing through the list by using traditional for loop and getting the elements on the console
+		/* for (int i=0; i<list_links.size();i++) {
+		System.out.println(list_links.get(i).getText()); } */
+		//Traversing through the list by using for each loop/advanced for loop/enhanced for loop and getting the elements on the console
+		for (WebElement e: list_links) {
+		System.out.println(e.getText());
+		}
+		//clicking on hyperlink
+		link.click();
+
+	}
+
+}
+```
+**Output**: 
+
+```
+Jun 26, 2023 12:58:38 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+45
+
+Forgotten password?
+Create new account
+Create a Page
+?????
+????
+?????
+??????
+??????
+?????
+??????
+?????
+???????
+??????
+
+Sign Up
+Log in
+Messenger
+Facebook Lite
+Watch
+Places
+Games
+Marketplace
+Meta Pay
+Meta Store
+Meta Quest
+Instagram
+Fundraisers
+Services
+Voting Information Centre
+Privacy Policy
+Privacy Centre
+Groups
+About
+Create ad
+Create Page
+Developers
+Careers
+Cookies
+AdChoices
+Terms
+Help
+Contact uploading and non-users
+Settings
+Activity log
+
+```
