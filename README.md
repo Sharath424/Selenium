@@ -564,5 +564,189 @@ public class TestScripts6 {
 }
 ```
 
+## MOUSE ACTIONS
+
+1. Drag and Drop
+
+2. Right click/context click
+
+3. Scroll 
+
+4. Double click
+
+5. Hover action
+
+### Scripts
 
 
+**Scenario**:  Write a script to launch the browser, maximize the window, navigate to jquery ui page, and perform DRAG and DROP action
+
+**Code**:
+
+```java
+package MouseActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to jquery web page
+		driver.get("https://jqueryui.com/droppable/");
+		//locating the iframe
+		WebElement iframe = driver.findElement(By.className("demo-frame"));
+		//switch to iframe box
+		driver.switchTo().frame(iframe);
+		//locating drag box
+		WebElement dragbox = driver.findElement(By.id("draggable"));
+		//locating drop box
+		WebElement dropbox = driver.findElement(By.id("droppable"));
+		Actions act = new Actions(driver);
+		//perform drag and drop
+		act.dragAndDrop(dragbox, dropbox).build().perform();
+
+
+	}
+
+}
+```
+
+#### Scripts 2
+
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to jquery ui page, perform click and hold action, moveToElement action and release action
+
+**Code**:
+
+```java
+package MouseActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to jquery web page
+		driver.get("https://jqueryui.com/droppable/");
+		//locating the iframe
+		WebElement iframe = driver.findElement(By.className("demo-frame"));
+		//switch to iframe box
+		driver.switchTo().frame(iframe);
+		//locating drag box
+		WebElement dragbox = driver.findElement(By.id("draggable"));
+		//locating drop box
+		WebElement dropbox = driver.findElement(By.id("droppable"));
+		Actions act = new Actions(driver);
+		//perform click and hold, moveToElement , release action.
+		act.clickAndHold(dragbox).moveToElement(dropbox).release().build().perform();
+
+	}
+
+}
+```
+
+
+#### Scripts 3
+
+
+**Scenario**: write a test script to launch the chrome browser, maximize the window, navigate to google page perform HOVER EFFECT on Gmail
+
+**Code**:
+
+```java
+package MouseActions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class TestScript3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to google web page
+		driver.get("https://google.com/");
+		//locating Gmail hyperlink/hypertext
+		WebElement gmail = driver.findElement(By.linkText("Gmail"));
+		//creating the object for Actions class
+		Actions act = new Actions(driver);
+		//performing hover effect
+		act.moveToElement(gmail).build().perform();
+
+	}
+
+}
+```
+
+#### Scripts 4
+
+
+**Scenario**: write a test script to launch the chrome browser, maximize the window, navigate to google page and type amazon.com in the search bar where amazon must be in upper case and .com must be in lower case.
+
+
+**Code**:
+
+```java
+package MouseActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class TestScript4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to google web page
+		driver.get("https://google.com/");
+		// locating the search box
+		WebElement search = driver.findElement(By.name("q"));
+		//creating the object of Actions class
+		Actions act = new Actions(driver);
+		//to type amazon in upper case
+		act.keyDown(Keys.SHIFT).build().perform();
+		search.sendKeys("amazon");
+		//to type .com in lower case
+		act.keyUp(Keys.SHIFT).build().perform();
+		search.sendKeys(".com");
+		//act.keyDown(Keys.SHIFT).sendKeys("amazon").keyUp(Keys.SHIFT).sendKeys(".com").build().perform();
+
+	}
+
+}
+```
+
+## NAVIGATE APIs
+
+1. navigate().back();
+
+2. navigate().forward();
+
+3. navigate().refresh();
+
+4. navigate().to()
