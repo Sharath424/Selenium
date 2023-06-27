@@ -1,5 +1,7 @@
 # Selenium
 
+![Automation-testing-process](images/selenium.png)
+
 ## Automation Testing Process
 ![Automation-testing-process](images/Automation-testing-process.png)
 
@@ -1044,3 +1046,331 @@ public class TestScript3 {
 }
 ```
 
+##  CSS SELECTORS 
+
+1. Tagname and Id_value
+
+2. Tagname and class_value
+
+3. Tagname and any attribute 
+
+4. Tagname class_value and any attribute
+
+5. Tagname id_value and any attribute
+
+6. Substring 
+
+* Startswith: ^
+
+* Endswith: $
+
+* Contains: *
+
+### Tagname and Id_value:
+* Syntax: tagname#Id_value
+* Tagname is the name of the tag.
+*  Id_value is the value which is present in id attribute.
+*  "#" symbol is the representation of id attribute.
+### Tagname and class_value:
+* Syntax: tagname.class_value
+* Tagname is the name of the tag.
+* class_value is the value which is present in class attribute.
+* . symbol is the representation of class attribute.
+### Tagname and any attribute:
+* Syntax: tagname[attribute_name=’attribute_value’]
+* Tagname is the name of the tag.
+* attribute_name is the name of the any attribute of the element.
+* Attribute_value is the value of selected attribute_name.
+### Tagname, class_value and any attribute:
+* Syntax: tagname.class_value[attribute_name=’attribute_value’]
+* Tagname is the name of the tag.
+* . symbol is the representation of class attribute.
+* class_value is the value which is present in class attribute.
+* attribute_name is the name of the any attribute of the element.
+### Tagname, Id_value and any attribute:
+* Syntax: tagname#Id_value[attribute_name=’attribute_value’]
+* Tagname is the name of the tag.
+* "#" symbol is the representation of id attribute.
+* Id_value is the value which is present in id attribute.
+* attribute_name is the name of the any attribute of the element.
+* Attribute_value is the value of selected attribute_name.
+
+### Using substring approach
+
+1. Startswith: ^
+
+* Syntax: tagname[attribute_name^=’attribute_value’]
+
+* ^ symbol is used to represent that attribute value starts with a particular word.
+
+* attribute_name is the name of the any attribute of the element.
+
+* Attribute_value is the value of selected attribute_name.
+
+2. Endswith: $
+
+* Syntax: tagname[attribute_name$=’attribute_value’]
+
+* $ symbol is used to represent that attribute value ends with a particular word.
+
+* attribute_name is the name of the any attribute of the element.
+
+*  Attribute_value is the value of selected attribute_name.
+
+3. Contains: *
+
+* Syntax: tagname[attribute_name*=’attribute_value’]
+
+* * Symbol is used to represent that attribute value contains a particular word.
+
+* attribute_name is the name of the any attribute of the element.
+
+* Attribute_value is the value of selected attribute_name.
+
+
+#### Scripts 
+
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to Facebook page, locate the create new hyperlink, after clicking, locate the password element using css selector and send keys to password field.
+
+**Code**:
+
+```java
+package CssSelector;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating password filed by using css selector- tagname & id_value
+		WebElement password = driver.findElement(By.cssSelector("input#password_step_input"));
+		//sending the keys to password
+		password.sendKeys("Autom@tion");
+
+	}
+
+}
+```
+
+
+##### Scripts 2
+
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to Facebook page, locate the create new hyperlink, after clicking, locate the male radio button using css selector and click on it
+
+
+**Code**:
+
+```java
+
+package CssSelector;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating password filed by using css selector- tagname and any attribute
+		WebElement male = driver.findElement(By.cssSelector("input[value='2']"));
+		//clicking on male radio button
+		male.click();
+		
+	}
+
+}
+```
+
+
+##### Scripts 3
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to zomato page, locate email web element and send the keys.
+
+**Code**:
+
+```java
+package CssSelector;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to zomato page
+		driver.get("https://www.zomato.com/");
+		driver.findElement(By.cssSelector("input.sc-1yzxt5f-9")).sendKeys("selenium@gmail.com");
+
+	}
+
+}
+```
+
+
+##### Scripts 4
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to zomato page, locate phone number radio button and send the keys using advanced locators
+
+
+**Code**:
+
+```java
+
+package CssSelector;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to zomato page
+		driver.get("https://www.zomato.com/");
+		//locating phone number radio button using css selector- tagname and any attribute
+		driver.findElement(By.cssSelector("circle[value='mobile']")).click();
+		//locating and sending keys to phone number text box using css selector-taganme ,class_value and any attribute
+		driver.findElement(By.cssSelector("input.sc-60vv3c-0[class='sc-60vv3c-0 fyGVHZ scfvLVrH eLNIdd']")).sendKeys("7338439554");
+		
+
+	}
+
+}
+```
+
+##### Scripts 5
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to Facebook page, locate the create new hyperlink, after clicking locate first name, surname, email, password and send the keys.
+
+**Code**:
+
+```java
+package CssSelector;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating first name using css selector -tagname and any attribute
+		driver.findElement(By.cssSelector("input[name='firstname']")).sendKeys("Lokesh");
+		//locating surname using css selector- substring contains *
+		driver.findElement(By.cssSelector("input[name*='lastname']")).sendKeys("Kumar");
+		//locating email using css selector- substring startswith ^
+		driver.findElement(By.cssSelector("input[name^='reg_email__']")).sendKeys 
+		("selenium190@gmail.com");
+		//locating reconfirm email using substring- endswith $
+		driver.findElement(By.cssSelector("input[name$='confirmation__']")).sendKeys 
+		("selenium190@gmail.com");
+		//locating password filed by using css selector-tagname ,id_value and any attribute
+		driver.findElement(By.cssSelector("input#password_step_input[name='reg_passwd__']")).sendKeys("12345678");
+
+	}
+
+}
+
+```
+
+
+##### Scripts 6
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to yatra page, locate and click on student fare checkbox, locate and click on hotels,locate and click on holidays using css selectors
+
+
+**Code**:
+
+```java
+
+package CssSelector;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class TestScripts6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to yatra page
+		driver.get("https://www.yatra.com/");
+		//locating and clicking on student fare checkbox by using css selectorstartswith
+		driver.findElement(By.cssSelector("a[title^='Student']")).click();
+		//locating and clicking on hotel using css selector-endswith
+		driver.findElement(By.cssSelector("a[id$='hotels']")).click();
+		//locating and clicking on holidays using css selector-contains
+		driver.findElement(By.cssSelector("a[id*='holidays']")).click();
+
+	}
+
+}
+```
