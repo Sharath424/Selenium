@@ -804,5 +804,243 @@ public class TestScript1 {
 
 ## WINDOW HANDLING IN SELENIUM
 
+Window handling in selenium can be done by using two methods.
 
-**Scenario**:
+1. getWindowHandle( ): This method will return the address of the web page where selenium is present.
+
+2. getWindowHandles( ): This method will return the address of both parent and child windows.
+
+
+### Scripts 
+
+
+**Scenario**: write a test script to launch the chrome browser, maximize the window, navigate to parent window, get the address of the parent window using getWindowHandle( ) method ,locate the hyper link present in the parent window, after clicking on the hyperlink, get the address of the child window using getWindowHandle( ) method and check if both the addresses are same or different if same then selenium is present in parent window.
+
+**HTML Code**:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>My Window</title></head>
+<body>
+<h1>Parent Window </h1>
+<a href="https://www.fb.com" target="_blank">click here</a>
+</body> </html>
+
+```
+
+**Code** :
+
+```Java
+package WindowsHandling;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my window web page
+		driver.navigate().to("E:\\Automation\\Selenium\\HTML\\Index.html");
+		//file:///E:/Automation/Selenium/HTML/Index.html
+		//locating the hyper link
+		WebElement link = driver.findElement(By.linkText("click here"));
+		//clicking the link
+		link.click();
+		//locate the address of parent window
+		String parent_window = driver.getWindowHandle();
+		System.out.println("currently selenium is present in "+parent_window);
+		//locate the address of child window
+		String child_window = driver.getWindowHandle();
+		System.out.println("currently selenium is present in "+child_window);
+
+	}
+
+}
+
+```
+
+**Output**:
+
+![Automation-testing](images/Windowshanding-testscript.png)
+
+
+#### Scripts 2 
+
+
+**Scenario**: write a test script to launch the chrome browser, maximize the window, navigate to parent window, get the address of both the parent window and child window using getWindowHandles( ) method.
+
+**HTML Code**:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>My Window</title></head>
+<body>
+<h1>Parent Window </h1>
+<a href="https://www.fb.com" target="_blank">click here</a>
+</body> </html>
+
+```
+
+**Code** :
+
+```Java
+package WindowsHandling;
+import java.util.Set;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my window web page
+		driver.navigate().to("E:\\Automation\\Selenium\\HTML\\Index.html");
+		//locating the hyper link
+		WebElement link = driver.findElement(By.linkText("click here"));
+		//clicking the link
+		link.click();
+		//locate the address of parent window
+		String parent_window = driver.getWindowHandle();
+		System.out.println("currently selenium is present in "+parent_window);
+		//locating the address of child window
+		String child_window = driver.getWindowHandle();
+		System.out.println("currently selenium is present in "+child_window);
+		//locating the addresses of both child and parent window
+		Set<String> address = driver.getWindowHandles();
+		System.out.println("address of both parent and child windows"+address);
+		for (String i: address)
+		{
+		System.out.println(i); 
+		}
+	}
+
+}
+```
+
+**Output**:
+
+![Automation-testing](images/Windowshandingaddress-testscript.png)
+
+
+
+#### Scripts 2 
+
+
+**Scenario**:write a test script to launch the chrome browser, maximize the window, navigate to parent window, get the address of the parent window, locate the hyper link present in the parent window, after clicking on the hyperlink, get the address of the child window, switch to child window and send the keys to all the web elements and then switch back to parent window by passing the parent web page address.
+
+**HTML Code**:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>My Window</title></head>
+<body>
+<h1>Parent Window </h1>
+<a href="https://www.fb.com" target="_blank">click here</a>
+</body> </html>
+
+```
+
+**Code** :
+
+```Java
+package WindowsHandling;
+import java.util.List;
+import java.util.Set;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class TestScript3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my window web page
+		driver.navigate().to("E:\\Automation\\Selenium\\HTML\\Index.html");
+		//locating the hyper link
+		WebElement link = driver.findElement(By.linkText("click here"));
+		//clicking the link
+		link.click();
+		//locate the address of parent window
+		String parent_window = driver.getWindowHandle();
+		System.out.println("currently selenium is present in "+parent_window);
+		//locating the address of both parent and child window
+		Set<String> address = driver.getWindowHandles();
+		System.out.println("address of both parent and child windows"+address);
+		for (String i : address) {
+		if(i.equals(parent_window)) {
+			
+		
+		//do nothing!
+			}
+		else {
+		driver.switchTo().window(i); 
+		// locating the Create new account hyperlink
+		WebElement links= driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		links.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // we use thread.sleep, because the execution speed of eclipse is not matching with web page loading speed and we get 'no such element exception'
+		// locating the first name web element
+		WebElement firstname = driver.findElement(By.name("firstname"));
+		// sending values to first name web element
+		firstname.sendKeys("Lokesh");
+		// locating the last name web element
+		WebElement lastname = driver.findElement(By.name("lastname"));
+		// sending values to last name web element
+		lastname.sendKeys("Kumar");
+		// locating the mobile number web element
+		WebElement mobilenumber = driver.findElement(By.name("reg_email__"));
+		// sending values to mobile number web element
+		mobilenumber.sendKeys("7489561235");
+		// locating the password web element
+		WebElement password = driver.findElement(By.name("reg_passwd__"));
+		// sending values to password web element
+		password.sendKeys("Autom@tion");
+		// sending the values to drop down box using selectByVisibleText() method
+		//sending values to day
+		WebElement day= driver.findElement(By.name("birthday_day"));
+		Select sel1 =new Select(day);
+		sel1.selectByVisibleText("05");
+		//sending values to month
+		WebElement month= driver.findElement(By.name("birthday_month"));
+		Select sel2 = new Select(month);
+		sel2.selectByVisibleText("Nov");
+		//sending values to year
+		WebElement year= driver.findElement(By.name("birthday_year"));
+		Select sel3 = new Select(year);
+		sel3.selectByVisibleText("1997"); }
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.switchTo().window(parent_window);
+		}
+		}
+
+}
+```
+
