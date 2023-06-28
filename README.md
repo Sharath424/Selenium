@@ -1374,3 +1374,562 @@ public class TestScripts6 {
 
 }
 ```
+##  X-PATH
+
+Absolute X-path
+Relative X-path
+
+| ABSOLUTE X-PATH  |  RELATIVE X-PATH |
+|---|---|
+| In absolute x-path expression will start from the root element (html tag).  |  In relative x-path expression will start from the parent element. |
+| In absolute x-path single forward slash(/) is used.  |In relative x-path double forward slash(//) is used   |
+| Absolute x-path expression is larger in size compared to relative x-path expression.  | Relative x-path expression is smaller expression compared to absolute x-path expressions.  |
+|Consumes more time in test execution. | Consumes less time in text execution|
+|Absolute x-path is used less | Relative x-path is used frequently.|
+|Ex: /html/body/div[1]/table/tbody/td[1]/a | Ex://div[1]//table//tbody//tr//td[1]//a |
+
+
+### DOM Structure
+
+![Automation-testng](images/dom-structure.png)
+
+
+1. Absolute X path: to locate link 1
+
+* /html/body/div[1]/table/tbody/td[1]/a (or)
+
+* /html/body/div[1]/table/tbody/td[1]
+
+2. Relative X path: to locate link 1
+
+* //div[1]//table//tbody//tr//td[1]//a (or)
+
+* //div[1]//td[1]//a (or)
+
+* // div[1]//td[1]
+
+
+#### Scripts 
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to my web page, locate and click on link 1 and link 2 by using absolute and relative x-path.
+
+**HTML Code**
+
+```html
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>My Web Page</title>
+ </head>
+<body>
+ <div>
+ <table border>
+ <tr>
+ <td>
+ <a href="https://www.fb.com" target="_blank">link1</a> 
+ </td>
+ <td>
+ <a href="https://www.zomato.com" target="_blank">link2</a> 
+ </td>
+ </tr>
+ </table border>
+ </div>
+ <div>
+ <table border>
+ <tr>
+ <td>
+ <a href="https://www.amazon.com" target="_blank">link3</a> 
+ </td>
+ <td>
+ <a href="https://www.hackerrank.com" target="_blank">link4</a> 
+ </td> 
+ </tr>
+ </table border>
+ </div>
+</body>
+</html>
+
+```
+
+**Code**:
+
+```java
+package Xpath;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my web page
+		driver.get("E:\\Automation\\Selenium\\HTML\\Index2.html");
+		//locating and clicking on link1 by using absolute xpath.
+		driver.findElement(By.xpath("/html/body/div[1]/table/tbody/tr/td[1]/a")).click();
+		//locating and clicking on link1 by using relative xpath
+		driver.findElement(By.xpath("//div[1]//td[1]//a")).click();
+		//locating and clicking on link4 by using relative xpath.
+		driver.findElement(By.xpath("//div[2]//td[2]//a")).click();
+		//locating and clicking on link4 by using absolute xpath.
+		driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/a")).click();
+
+		
+	}
+
+}
+```
+
+### DIFFERENT APPROACHES OF RELATIVE X-PATH
+
+1. Using attribute.
+
+2. Using text ().
+
+3. Using contains ().
+
+4. Using stars-with ().
+
+5. Using AND, OR.
+
+6. Using axes ().
+
+#### X PATH USING ATTRIBUTE
+
+* Syntax: //tagname[@attribute_name =’attribute_value’]
+* Tagname is the name of the tag.
+* @ symbol is used to specify the attribute name.
+* attribute_name is the name of the any attribute of the element.
+* Attribute_value is the value of selected attribute_name.
+
+#### X PATH USING TEXT( )
+
+* Syntax: //tagname[text()=’text_value’]
+* Tagname is the name of the tag.
+* text() is the name of the method.
+* text_value is the text present in the element.
+
+#### X PATH USING CONTAINS( )
+
+* Syntax: //tagname[contains(text(),text_value or partial_text)]
+* Contains will check if the specific text is present in the element.
+* Tagname is the name of the tag.
+* text() is the name of the method.
+* text_value is the text present in the element.
+
+#### X PATH USING starts-with( )
+
+* Syntax: //tagname[starts-with(@attribute_name,’attribute_value’)]
+* Tagname is the name of the tag.
+* starts-with() is the method that specifies the attribute value that starts with particular string.
+* @ symbol is used to specify the attribute name.
+* attribute_name is the name of the any attribute of the element.
+* Attribute_value is the value of selected attribute_name.
+
+#### A. X PATH USING AND OPERATOR 
+
+* **Syntax**: //tagname[@attribute_name =’attribute_value’ and @attribute_name =’attribute_value’]
+* **Tagname** is the name of the tag.
+* **@ symbol** is used to specify the attribute name.
+* **attribute_name** is the name of the any attribute of the element.
+* **Attribute_value** is the value of selected attribute_name.
+* **and** is the operator that will locate the elements if both the attributes (attribute_name1, attribute_name2) is matching.
+ 
+**B. X PATH USING OR OPERATOR**
+
+* **Syntax:** //tagname[@attribute_name =’attribute_value’ or @attribute_name =’attribute_value’]
+* **Tagname** is the name of the tag.
+* **@ symbol** is used to specify the attribute name.
+* **attribute_name** is the name of the any attribute of the element.
+* **Attribute_value** is the value of selected attribute_name.
+* **or** is the operator that will locate the elements if any one of the attributes (attribute_name1, attribute_name2) is matching.
+
+#### X PATH USING AXES METHOD TO LOCATE THE WEB ELEMENT
+
+1. Locate parent tag:
+
+* Syntax: //tagname[@attribute_name = ’attribute_value’]//parent::parent_tagname.
+
+2. Locate child tag:
+
+* Syntax: //tagname[@attribute_name = ’attribute_value’]//child::child_tagname.
+
+3. locate ancestor tag:
+
+* Syntax: //tagname[@attribute_name = ’attribute_value’]//ancestor:: ancestor_tagname.
+
+4. Locate following-sibling tag:
+
+* Syntax:  //tagname[@attribute_name=’attribute_value’]//following-sibling::sibling_tagname.
+
+5. Locate following tag:
+
+* Syntax: //tagname[@attribute_name =’attribute_value’]//following::following_tagname.
+
+## DOM STRUCTURE EXAMPLE
+
+![automation](images/dom-structure2.png)
+
+
+### Scripts
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to my web page, locate and click on my link using attribute approach of relative xpath,locate and click on options present in select box by using text () approach of relative xpath, locate and on click options present in select box by using contains() approach of relative xpath.
+
+**HTML Code**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>My WebPage </title>
+</head>
+<body>
+<div id="div1">
+ <span>
+ <p> paragraph1</p>
+ </span>
+ <span>
+ <p> paragraph2</p>
+ <p> paragraph3</p>
+ </span>
+</div>
+<div id="div2">
+ <table border>
+ <tr>
+ <td><a href="https://www.amazon.com/" target="_blank">my link</a></td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>
+ <p>paragraph4</p>
+ <p>paragraph5</p>
+ </td>
+ </tr>
+ </table>
+</div>
+<br>
+<select id="subject">
+ <option>java </option>
+ <option>manual testing</option>
+ <option>automation testing</option>
+ <option>sql</option>
+</select>
+<ul id="number">
+<ul id="number">
+<li value="one">one</li>
+<li value="two">two</li>
+<li value="three">three</li>
+<li value="four">four</li>
+<li value="five">five</li>
+</ul>
+</body>
+</html>
+```
+
+```java
+package Domstructure;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my web page
+		driver.get("E:\\Automation\\Selenium\\HTML\\Index3.html");
+		//locate and click on my link using attribute approach of relative xpath
+		driver.findElement(By.xpath("//a[@target='_blank']")).click();
+		//locate and on click options present in select box by using text () approach of relative xpath
+		driver.findElement(By.xpath("//option[text()='automation testing']")).click();
+		//locate and on click options present in select box by using contains () approach of relative xpath
+		driver.findElement(By.xpath("//option[contains(text(),'m')]")).click();
+		//locate and click on list three using starts-with approach of relative xpath
+		driver.findElement(By.xpath("//li[starts-with(@value,'th')]")).click();
+		//locate and click on my link using AND approach of relative xpath
+		driver.findElement(By.xpath("//a[@target='_blank' and @id='anchor']")).click();
+		//locate and click on my link using OR approach of relative xpath
+		driver.findElement(By.xpath("//a[@target='_blank' or @id='ancho']")).click();
+		//locate and click on my link using axes method of relative xpath to locate parent tag approach
+		driver.findElement(By.xpath("//a[@target='_blank']//parent::td")).click();
+		//locate and click on list three using axes method of relative xpath to locate child tag approach
+		driver.findElement(By.xpath("//ul[@id='number']//child::li[3]")).click();
+		//locate and click on my link using axes method of relative xpath to locate ancestor tag approach
+		driver.findElement(By.xpath("//a[@target='_blank']//ancestor::table")).click();
+		//locating the following siblings of 'two' in my web page using axes method of relative xpath to locate following-sibling tag approach 
+		driver.findElement(By.xpath("//li[@value='two']//following-sibling::li[2]")).click();
+		//locate and click on my link using axes method of relative xpath to locate following tag approach 
+		driver.findElement(By.xpath("//div[@id='div2']//following::a")).click();
+
+	}
+
+}
+
+```
+
+
+#### Scripts 2
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Instagram web page, locate and send keys to phone number box using attributeapproach of relative xpath.
+
+```java
+
+package Domstructure;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my instagram page
+		driver.get("https://www.instagram.com//");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating the phone number box and sending keys using, attribute approach of 	relative xpath
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("7845612569");
+		
+
+	}
+
+}
+
+
+```
+
+
+#### Scripts 3
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to facebook web page, locate the create new hyperlink, after clicking, locate and click on any month option using contains ( ) approach of relative xpath.
+
+```java
+
+package Domstructure;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//option[contains(text(),'Dec')]")).click();
+		
+
+	}
+
+}
+```
+
+
+#### Scripts 4
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Instagram web page, locate and send keys to password field using starts-with() approach of relative xpath,
+
+
+```java
+package Domstructure;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to my instagram page
+		driver.get("https://www.instagram.com//");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating the password field and sending keys using starts-with() approach of relative xpath
+		driver.findElement(By.xpath("//input[starts-with(@name,'password')]")).sendKeys("783445678");
+	}
+
+}
+```
+
+
+#### Scripts 5
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to facebook web page, locate the create new hyperlink, after clicking, locate and click on DOB drop down box using axes method of relative xpath to locate child tag approach
+
+
+```java
+package Domstructure;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locate and click on my link using axes method of relative xpath to locate child tag .
+		driver.findElement(By.xpath("//select[@id='day']//child::option[23]")).click();
+		driver.findElement(By.xpath("//select[@id='month']//child::option[12]")).click();
+		driver.findElement(By.xpath("//select[@id='year']//child::option[97]")).click();
+
+	}
+
+}
+
+```
+
+#### Scripts 6
+
+**Scenario**:Write a script to launch the browser, maximize the window, navigate to facebook web page, locate the create new hyperlink, after clicking, locate and click on following siblings of 'year' using axes method of relative xpath to locate following-sibling tag approach
+
+```java
+package Domstructure;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link=driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating the following siblings of 'year' in facebook page using axes method of relative xpath to locate following-sibling tag approach
+		driver.findElement(By.xpath("//select[@id='year']//following-sibling::option[@value='2000']")).click();
+		
+
+	}
+
+}
+
+```
+
+
+#### Scripts 7
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to google page, locate the search bar, send the keys as KodNest and print all the suggestions on the console
+
+```java
+package Domstructure;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		//maximize the window
+		driver.manage().window().maximize();
+		//navigating to google page
+		driver.get("https://www.google.com/");
+		//locating search bar in google page
+		WebElement search = driver.findElement(By.name("q"));
+		//sending the keys to search bar
+		search.sendKeys("amazon");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//locating all the suggestions given by search bar using tagName locator
+		List<WebElement> ele = driver.findElements(By.tagName("li"));
+		//traversing the web element
+		for (WebElement e : ele)
+		{
+		//printing all the suggestions on console
+		System.out.println(e.getText());
+		}
+
+		
+	}
+
+}
+
+```
+
+Output:
+
+![automation](images/dom_structure_testscript7.png)
+
+## SYNCHRONIZATION ON WEBDRIVER
+
