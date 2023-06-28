@@ -1933,3 +1933,115 @@ Output:
 
 ## SYNCHRONIZATION ON WEBDRIVER
 
+* Using Thread.sleep() we can’t maintain a proper synchronization between Selenium WebDriver and Web Page loading time.
+
+* If Thread.sleep() is applied on Selenium WebDriver then this approach will allow Selenium to resume the execution only after completion of the given duration.
+* To avoid this situation Selenium has provided waits.
+
+➢ **SELENIUM WAITS**:
+
+➢ There are two types of waits in selenium 
+
+1. Implicit wait.
+2. Explicit wait.
+
+➢ IMPLICIT WAIT
+
+* Implicit wait will apply the wait on all the findElement() or findElements() methods.
+
+* Implicit wait is applied by using implicitlyWait() method.
+
+* In implicit wait if selenium is not able to locate the web element the we get ‘NoSuchElementException’.
+
+➢ EXPLICIT WAIT
+
+* Explicit wait applies the wait only on the particular web element.
+
+* Explicit wait is applied by creating the object of WebDriverWait class.
+
+* In explicit wait if the given condition is wrong then we get ‘TimeOutException’, if selenium is not able to locate the web element the we get ‘NoSuchElementException’.
+
+
+### Scripts 
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Facebook page, locate and click on create new account button, after clicking provide IMPLICIT WAIT, locate and send keys to first name web element.
+
+```java
+package Seleniumwait;
+import java.io.IOException;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestScript1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		//implicit wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		// locating the first name web element
+		WebElement firstname = driver.findElement(By.name("firstname"));
+		// sending values to first name web element
+		firstname.sendKeys("lokesh");
+		
+
+	}
+
+}
+
+```
+
+
+#### Scripts 2
+
+**Scenario**: Write a script to launch the browser, maximize the window, navigate to Facebook page, locate and click on create new account button, after clicking provide EXPLICIT WAIT, locate and send keys to first name web element
+
+```java
+package Seleniumwait;
+import java.io.IOException;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestScript2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// launching the browser
+		ChromeDriver driver = new ChromeDriver();
+		// maximize the window
+		driver.manage().window().maximize();
+		// navigating to Facebook page
+		driver.get("https://www.facebook.com/");
+		// locating the Create new account hyperlink
+		WebElement link = driver.findElement(By.partialLinkText("Create new account"));
+		// clicking the Create new account hyperlink
+		link.click();
+		//explicit wait
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("firstname")));
+		// locating the first name web element
+		WebElement firstname = driver.findElement(By.name("firstname"));
+		// sending values to first name web element
+		firstname.sendKeys("lokesh");
+
+	}
+
+}
+
+```
