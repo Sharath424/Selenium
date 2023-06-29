@@ -2045,3 +2045,208 @@ public class TestScript2 {
 }
 
 ```
+## FRAMEWORKS IN SELENIUM
+
+1. Junit.
+
+2. TestNG.
+
+* We can add any frame work into our project by following two approaches
+
+1. Adding as a jar file.
+
+2. Adding as a dependency injection.
+
+
+### STEPS TO ADD JUNIT TO JAVA PROJECT AS A JAR FILE 
+
+STEP-1: Right click on the java project.
+
+STEP-2: Click on build path.
+
+STEP-3: Select configure build path.
+
+STEP-4: Click on libraries.
+
+STEP-5: Click on class path.
+
+STEP-6: Then click on add libraries.
+
+STEP-7: Select Junit.
+
+STEP-8: Apply and Close.
+
+### STEPS TO CREATE MAVEN PROJECT AND ADD DEPENDENCY INJECTION
+
+STEP-1: Click on file and create Maven project by providing data for Group Id and Artifact Id and Maven project should be a simple project.
+
+STEP-2: Click on POM.xml file and create "dependencies" tag inside the project and add or inject the dependency inside "dependencies" tag
+
+STEP-3: To get the respective POM.xml code, we need to visit Maven Repository.
+
+#### ADDING JUNIT AND SELENIUM DEPENDENCY TO MAVEN PROJECT
+
+```xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Selenium</groupId>
+	<artifactId>Selenium-Automation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.8.3</version>
+		</dependency>
+	</dependencies>
+
+</project>
+
+```
+### BASIC JUNIT PROGRAM in JAVA PROJECT AND MAVEN PROJECT
+
+**JAVA PROJECT**
+
+**CODE**:
+
+```java
+package junit;
+import org.junit.jupiter.api.Test;
+
+public class FirstJunit {
+
+	@Test
+	public void add()
+	{
+	System.out.println("Addition is "+(10+20));
+	}
+	@Test
+	public void sub()
+	{
+	System.out.println("Subtraction is "+(10-20));
+	}
+	}
+
+```
+
+**OUTPUT**
+![Automation](images/java_junit_program.png)
+
+**MAVEN PROJECT**
+
+**CODE**:
+
+```java
+import org.junit.Test;
+	
+public class Demo {
+
+	
+	@Test
+	public void add()
+	{
+	System.out.println("Addition is "+(10+20));
+	}
+	@Test
+	public void mul()
+	{
+	System.out.println("Multiplication is "+(10*20));
+	}
+	
+}
+```
+
+**OUTPUT**
+![Automation](images/MAVEM_JUNIT_CODE.png)
+
+### STEPS TO ADD TestNG TO JAVA PROJECT AS A JAR FILE 
+
+STEP-1: Right click on the java project.
+STEP-2: Click on build path.
+STEP-3: Select configure build path.
+STEP-4: Click on libraries.
+STEP-5: Check if TestNG library is present.
+STEP-6: If TestNG library is not present then install it from eclipse market place.
+STEP-7: After installing restart the eclipse IDE.
+STEP-8: Right click on the java project.
+STEP-9: Click on build path.
+STEP-10: Select configure build path.
+STEP-11: Click on libraries.
+STEP-12: Click on class path.
+STEP-13: Then click on add libraries.
+STEP-14: Select TestNG.
+STEP-15: Apply and Close.
+
+#### TestNG PROGRAM in JAVA PROJECT
+
+**CODE**:
+
+```java
+package TestNG;
+import org.testng.annotations.Test;
+
+public class testng {
+
+	@Test
+	public void add()
+	{
+	System.out.println("Addition is "+(10+20));
+	}
+	@Test
+	public void sub()
+	{
+	System.out.println("Subtraction is "+(10-20));
+	}
+	@Test
+	public void mul()
+	{
+	System.out.println("Multiplication is "+(10*20));
+	}
+	@Test
+	public void div()
+	{
+	System.out.println("Division is "+(20/10));
+	}
+	}
+```
+
+**OUTPUT**
+
+```
+Addition is 30
+Division is 2
+Multiplication is 200
+Subtraction is -10
+PASSED: TestNG.testng.sub
+PASSED: TestNG.testng.mul
+PASSED: TestNG.testng.add
+PASSED: TestNG.testng.div
+
+===============================================
+    Default test
+    Tests run: 4, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 4, Passes: 4, Failures: 0, Skips: 0
+===============================================
+```
+**TEST REPORT**
+
+![Automation](images/Testngreport.png)
+
