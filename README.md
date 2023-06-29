@@ -2250,3 +2250,358 @@ Total tests run: 4, Passes: 4, Failures: 0, Skips: 0
 
 ![Automation](images/Testngreport.png)
 
+#### Program to give priority using ‘priority’ keyword.
+
+**CODE** :
+
+```java
+package TESTNG;
+import org.testng.annotations.Test;
+
+public class priority {
+
+
+	@Test(priority = 1)
+	public void add()
+	{
+	System.out.println("Addition is "+(10+20));
+	}
+	@Test(priority = 2)
+	public void sub()
+	{
+	System.out.println("Subtraction is "+(10-20));
+	}
+	@Test(priority = 3)
+	public void mul()
+	{
+	System.out.println("Multiplication is "+(10*20));
+	}
+	@Test(priority = 4)
+	public void div()
+	{
+	System.out.println("Division is "+(20/10));
+	}
+	}
+	
+```
+
+**OUTPUT**
+
+![Automation](images/Priorty.png)
+
+#### Program to give ‘priority’ and ‘description’ to the given methods
+
+* The description content will be present only on the console not in the email able report.
+
+* The priority key is used to set the priority on the given methods.
+
+**CODE**:
+
+```java
+
+package TESTNG;
+
+import org.testng.annotations.Test;
+
+public class PriorityDescription {
+
+	@Test(priority = 1)
+	public void add()
+	{
+	System.out.println("Addition is "+(10+20));
+	}
+	@Test(priority = 2)
+	public void sub()
+	{
+	System.out.println("Subtraction is "+(10-20));
+	}
+	@Test(priority = 3,description = "The mul method should be passed kindly check ")
+	public void mul()
+	{
+	System.out.println("Multiplication is "+(10*20));
+	}
+	@Test(priority = 4)
+	public void div()
+	{
+	System.out.println("Division is "+(20/10));
+	}
+	
+
+}
+
+```
+
+**OUTPUT**:
+
+![Automation](images/PriortyandDescription.png)
+
+#### ANNOTATIONS AND PROPERTIES IN TestNG
+
+1. **BeforeMethod_Annotations**: If this annotation is annotated to any method, then that method will execute before each and every @Test annotated method.
+
+2. **AfterMethod_Annotations**: If this annotation is annotated to any method, then that method will execute after each and every @Test annotated method.
+
+3. **BeforeTest_Annotation**: If this annotation is annotated to any method, then that method will execute before all the @Test annotated method.
+
+4. **AfterTest_Annotation**: If this annotation is annotated to any method, then that method will execute after all the @Test annotated method.
+
+5. **Priority Property**: Priority property is used to set the priority for a particular test during test execution.
+
+6. **Description Property**: Description property is used to display a message in the console after test execution.
+
+
+#### SCripts
+
+**Program to demonstrate the usage of BeforeMethod annotation and AfterMethod annotation.**
+
+**CODE** :
+
+```java
+package TESTNG;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+
+public class Afterandbefore {
+
+	@BeforeMethod
+	public void login_Test()
+	{
+	System.out.println("Login Completed");
+	}
+	@Test
+	public void compose_Test()
+	{
+	System.out.println("composing of mail Completed");
+	}
+	@Test
+	public void sendmail_Test()
+	{
+	System.out.println("sending of mail is Completed");
+	}
+	@AfterMethod
+	public void logout_Test()
+	{
+	System.out.println("logout is Completed");
+	}
+
+	
+}
+
+```
+
+**OUTPUT**:
+
+![Automation](images/Afterandbefore.png)
+
+#### SCripts 2
+
+**Program to demonstrate the usage of SkipException in maven project**
+
+* SkipException Class in TestNG: SkipException is an Exception class provided by TestNG framework to skip the test execution.
+
+* Every test skip will be reflected in the test report.
+
+**CODE**:
+
+```java
+package TESTNG;
+import org.testng.SkipException;
+import org.testng.annotations.Test;
+
+public class Skip {
+
+	@Test
+	public void add() {
+	int a=12;
+	int b=45;
+	int c=a+b;
+	System.out.println(c);
+	throw new SkipException("Still under development");
+	}
+	@Test
+	public void sub() {
+	int a=12;
+	int b=45;
+	int c=a-b;
+	System.out.println(c);
+	}
+	}
+```
+
+**OUTPUT**
+
+![Automation](images/skip.png)
+
+
+#### SCripts 3
+
+**Write a program in TestNG Maven Project to launch the chrome browser, maximize the window, navigate to google page, get the title and compare the actual title and expected title using assertions with a positive test case scenario.**
+
+**CODE**
+
+```java
+package TESTNG;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class Chrome {
+	@Test
+	public void compare() 
+	{
+	//launching the browser
+	WebDriver driver = new ChromeDriver();
+	//maximize the window 
+	driver.manage().window().maximize();
+	//storing the expected title
+	String expected_title="Google";
+	//navigating to google page 
+	driver.navigate().to("https://www.google.com");
+	//getting the actual title
+	String actual_title=driver.getTitle();
+	//comparing expected title and actual title
+	Assert.assertEquals(actual_title, expected_title);
+	}
+	}
+
+```
+
+**OUTPUT**
+
+![Automation](images/chrome.png)
+
+#### SCripts 4
+
+**Write a program in TestNG Maven Project to launch the chrome browser, maximize the window, navigate to YATRA page, locate and click on 1 Travellers(s), class print the text on the console, after performing click action 5 times on adult section the text will change to 5 Travellers(s), class print the text on the console, now compare the actual URL and current URL of yatra page using assertions and close the browser**
+
+**CODE**
+
+```java
+package TESTNG;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+public class yatri {
+	@Test
+	public void demo()
+	{
+	//launch the browser
+	WebDriver driver = new ChromeDriver();
+	//maximize the window
+	driver.manage().window().maximize();
+	//navigate to yatra page
+	driver.get("https://www.yatra.com/");
+	//locating and clicking on 1 Travellers(s) ,class
+	WebElement a = driver.findElement(By.className("txt-ellipses"));
+	//printing the text on the console
+	System.out.println(a.getText());
+	a.click();
+	// Set implicit wait to 10 seconds
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	//clicking 5 times on the adult section
+	for (int i = 0; i < 4; i++)
+	{
+	//locating and performing click action on the adult section
+	driver.findElement(By.className("ddSpinnerPlus")).click();
+	}
+	//locating and clicking on 5 Travellers(s) ,class
+	WebElement c = driver.findElement(By.className("txt-ellipses"));
+	//printing the text on the console
+	System.out.println(c.getText());
+	//storing the actual url
+	String actualURL="https://www.yatra.com/";
+	//storing the current url
+	String currentURL= driver.getCurrentUrl();
+	//printing the actual url
+	System.out.println(actualURL);
+	//printing the current url
+	System.out.println(currentURL);
+	// Compare actualURL and currentURL using assertions
+	Assert.assertEquals(actualURL, currentURL);
+	//close the browser
+	driver.close();
+	}
+	}
+
+
+```
+
+**OUTPUT**
+
+![Automation](images/yatri.png)
+
+#### PROJECT ON E-COMMERCE WEBSITE(AMAZON)
+
+**Performing end to end testing till payment gateway on amazon application using selenium web driver for performing automation testing and TestNG for generating report.** 
+
+**CODE**
+
+```java
+
+package TESTNG;
+import java.time.Duration;
+import java.util.Set;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class amazon {
+
+	@Test
+	public void demo()
+	{
+	//launching the browser
+	WebDriver driver = new ChromeDriver();
+	//maximizing the window
+	driver.manage().window().maximize();
+	//navigating to amazon page
+	driver.get("https://www.amazon.in/");
+	//locating search bar and sending keys and clicking enter
+	driver.findElement(By.id("twotabsearchtextbox")).sendKeys("City of Djins: year in Delhi", Keys.ENTER);
+	//locating and clicking on the book
+	
+	driver.findElement(By.cssSelector("img[src='https://m.media-amazon.com/images/I/51u8SeCRi1L._AC_UY218_.jpg']")).click();
+	
+	//driver.findElement(By.cssSelector("#search > div.s-desktop-width-max.s-desktop-content.s-wide-grid-style-t3.s-opposite-dir.s-wide-grid-style.sg-row > div.sg-col-20-of-24.s-matching-dir.sg-col-16-of-20.sg-col.sg-col-8-of-12.sg-col-12-of-16 > div > span.rush-component.s-latency-cf-section > div.s-main-slot.s-result-list.s-search-results.sg-row > div:nth-child(7) > div > div > div > div > div > div.sg-col.sg-col-4-of-12.sg-col-4-of-16.sg-col-4-of-20.sg-col-4-of-24.s-list-col-left > div > div.s-product-image-container.aok-relative.s-text-center.s-image-overlay-grey.puis-image-overlay-grey.s-padding-left-small.s-padding-right-small.s-flex-expand-height.puis.puis-v132n5e4faosf42v0eo3rf7vw9m > div > span > a > div > img")).click();
+	//getting the address of parent window
+	
+	
+	String parent = driver.getWindowHandle();
+	//applying implicit wait
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	// Getting the address of parent and child window
+	Set<String> address = driver.getWindowHandles();
+	// Switching to the child window
+	for (String e : address)
+	{
+	if(!e.equalsIgnoreCase(parent))
+	{
+	driver.switchTo().window(e);
+	}
+	}
+	//locating and clicking on buy now button
+	driver.findElement(By.name("submit.buy-now")).click();
+	//locating and sending keys to password
+	driver.findElement(By.name("email")).sendKeys("8970145866",Keys.ENTER);
+	//locating password and sending keys
+	driver.findElement(By.id("ap_password")).sendKeys("Autom@tion",Keys.ENTER);
+	
+	}
+
+}
+```
+
+**OUTPUT**
+
+![Automation](images/amazon.png)
