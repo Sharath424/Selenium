@@ -1,0 +1,25 @@
+package ApiTesting;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+
+public class Getting_started {
+  	@Test
+	public void simple_get_request(){
+  		
+	RestAssured.baseURI="http://restcountries.eu/rest/v2";
+	
+	RequestSpecification httpRequest=RestAssured.given();
+	
+	Response response=httpRequest.request(Method.GET,"/all");
+	
+	String responseBody = response.getBody().asString();
+	
+	System.out.println(responseBody);
+	}
+}
