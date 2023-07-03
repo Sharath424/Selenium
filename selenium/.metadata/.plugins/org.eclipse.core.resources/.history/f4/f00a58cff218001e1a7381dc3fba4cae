@@ -1,0 +1,37 @@
+package Admin_todos;
+
+import static io.restassured.RestAssured.*;
+
+import org.testng.annotations.Test;
+
+import io.restassured.http.ContentType;
+
+import org.json.JSONObject;
+import org.testng.Assert;
+
+public class AdminTodos {
+	@Test
+	public void login() {
+
+		JSONObject body = new JSONObject();
+		body.put("userName", "admin");
+		body.put("userPassword", "admin@123");
+
+		given().baseUri("http://localhost:8081").contentType(ContentType.JSON).body(body.toString()).when()
+				.post("/authenticate").then().statusCode(200);
+
+	}
+
+	public void CreateTodo() {
+
+		JSONObject body = new JSONObject();
+		body.put("id", 8);
+		body.put("description", "learn Selenium");
+		body.put("title", "Automation testing");
+
+		given().baseUri("http://localhost:8081/api/v1").contentType(ContentType.JSON).body(body.toString()).when()
+				.post("/todos").then().statusCode(200);
+
+	}
+
+}

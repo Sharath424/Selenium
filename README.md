@@ -2605,3 +2605,4 @@ public class amazon {
 **OUTPUT**
 
 ![Automation](images/amazon.png)
+
