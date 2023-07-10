@@ -39,19 +39,22 @@
 
 #### Steps to Add Selenium IDE to web Browser
 
-1. Open google chrome
+{{1-5}}
+> **Step-1** : Open google chrome and Click on customize and control google chrome button on the top right corner.
+>![Automation-testing-process](images/google_chrome.png)
 
-2. Click on customize and control google chrome button on the top right corner.
 
-3. Click on Extension.
+{{2-5}}
+>**Step-2** :Click on Extension and Click on visit chrome web store.
+>![Automation-testing-process](images/google_extension.png)
 
-4. Click on visit chrome web store.
+{{3-5}}
+>**Step-3** :In search bar, search for Selenium IDE and click on enter.
+>![Automation-testing-process](images/Selenium_ide.png)
 
-5. In search bar, search for Selenium IDE and click on enter.
-
-6. Select Selenium IDE extension.
-
-7. After downloading u will get a pop-up window
+{{4-5}}
+>**Step-4** :Select Selenium IDE extension and After downloading u will get a pop-up window
+>>![Automation-testing-process](images/Selenium_ide_extension.png)
 
 #### Steps to Perform Automation Testing in Selenium IDE
 
@@ -2174,21 +2177,35 @@ public class Demo {
 
 ### STEPS TO ADD TestNG TO JAVA PROJECT AS A JAR FILE 
 
-STEP-1: Right click on the java project.
-STEP-2: Click on build path.
-STEP-3: Select configure build path.
-STEP-4: Click on libraries.
-STEP-5: Check if TestNG library is present.
-STEP-6: If TestNG library is not present then install it from eclipse market place.
-STEP-7: After installing restart the eclipse IDE.
-STEP-8: Right click on the java project.
-STEP-9: Click on build path.
-STEP-10: Select configure build path.
-STEP-11: Click on libraries.
-STEP-12: Click on class path.
-STEP-13: Then click on add libraries.
-STEP-14: Select TestNG.
-STEP-15: Apply and Close.
+* STEP-1: Right click on the java project.
+
+* STEP-2: Click on build path.
+
+* STEP-3: Select configure build path.
+
+* STEP-4: Click on libraries.
+
+* STEP-5: Check if TestNG library is present.
+
+* STEP-6: If TestNG library is not present then install it from eclipse market place.
+
+* STEP-7: After installing restart the eclipse IDE.
+
+* STEP-8: Right click on the java project.
+
+* STEP-9: Click on build path.
+
+* STEP-10: Select configure build path.
+
+* STEP-11: Click on libraries.
+
+* STEP-12: Click on class path.
+
+* STEP-13: Then click on add libraries.
+
+* STEP-14: Select TestNG.
+
+* STEP-15: Apply and Close.
 
 #### TestNG PROGRAM in JAVA PROJECT
 
