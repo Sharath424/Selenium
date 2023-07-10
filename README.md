@@ -103,6 +103,8 @@ browser for performing automation testing.
 
 * Create a class and write the test script to perform automation testing using Selenium WebDriver
 
+Link to apply the library : (https://www.youtube.com/watch?v=K2fGJIHrIXk)
+
 #### Scripts
 
 **Scenario**: write a test script to launch the browser (chrome browser), maximize the window and navigate to amazon web page.
