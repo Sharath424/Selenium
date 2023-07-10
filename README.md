@@ -2628,6 +2628,24 @@ public class amazon {
 
 ## Test Cases for rest API for TODO application
 
+* REST API, is a web service that follows the principles of Representational State Transfer (REST) architecture.
+
+* REST is a set of architectural constraints that are applied to web services, which can be used to create highly scalable and flexible web services.
+
+1. **What is REST**?
+
+* Representational State Transfer(REST), is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
+
+* For example, when a developer calls Instagram API to fetch a specific user (the resource), the API will return the state of that user, including their name, the number of posts that user posted on Instagram so far, how many followers they have, and more.
+
+* The representation of the state can be in a JSON format, and probably for most APIs this is indeed the case. It can also be in XML or HTML format.
+
+**What the server does when you, the client, call one of its APIs depends on 2 things that you need to provide to the server**:
+
+* An identifier for the resource you are interested in. This is the URI for the resource, also known as the endpoint. In fact, URI stands for Uniform Resource Locator.
+
+* The operation you want the server to perform on that resource, in the form of an HTTP method, or verb. The common HTTP methods are GET, POST, PUT, and DELETE.
+
 Link for todo-application: (https://github.com/Sharath424/Selenium/tree/main/selenium/todoapi-todoapi-JWT)
 
 ### pom.xml for restapi selenium script
