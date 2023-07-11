@@ -1,9 +1,0 @@
-package Admin_users;
-
-import org.testng.annotations.Test;
-
-public class GetAllUsers {
-  @Test
-  public void f() {
-  }
-}

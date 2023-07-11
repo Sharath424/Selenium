@@ -2726,3 +2726,4 @@ Link for todo-application: (https://github.com/Sharath424/Selenium/tree/main/sel
 
 ```
 
+Link for API test cases:-(https://github.com/Sharath424/Selenium/tree/main/selenium/AutomationTesting/src/test/java)

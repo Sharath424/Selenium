@@ -1,9 +1,0 @@
-package Admin_todos;
-
-import org.testng.annotations.Test;
-
-public class Put_todos {
-  @Test
-  public void f() {
-  }
-}
