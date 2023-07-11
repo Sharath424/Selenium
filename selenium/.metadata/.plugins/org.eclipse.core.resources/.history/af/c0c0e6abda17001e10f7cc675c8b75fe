@@ -1,9 +1,0 @@
-package SeleniumTestCase;
-
-import org.testng.annotations.Test;
-
-public class Getting_started {
-  @Test
-  public void f() {
-  }
-}
