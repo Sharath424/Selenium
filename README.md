@@ -89,7 +89,9 @@ browser for performing automation testing.
 
 ### Steps to Perform automation testing in Selenium Web Driver using Eclipse IDE
 
-* Create a new project in Eclipse IDE.
+* Download the Seleium driver by this link[Click-Here](https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.10.0/selenium-java-4.10.0.zip)
+
+* Open the eclipse and Create a new project in Eclipse IDE.
 
 * Right click on the project and click on build path.
 
@@ -130,6 +132,13 @@ public class TestScript1 {
 }
 
 ```
+
+**Note** : 
+
+* driver.get = will get the url and navigate to that page
+
+* driver.manage().window().maximize() = it will maximize the window browser 
+
 ##### Scripts 2
 
 **Scenario**: Write a script to launch the browser, maximize the window, navigate to Flipkart page and get the title of the page, minimize the window, make the window full screen, get the current URL for the web page and close the window
@@ -175,6 +184,14 @@ public class TestScript2 {
 
 ![Automation-testing-process](images/TestScript2.png)
 
+
+**Note** : 
+
+* driver.close() = will get the close the window browser
+
+* driver.manage().window().minimize() = it will minimize the window browser 
+
+* driver.getTitle() = it will get the title of the current browser
 
 ##### Scripts 3
 
@@ -942,7 +959,7 @@ public class TestScript2 {
 
 
 
-#### Scripts 2 
+#### Scripts 3 
 
 
 **Scenario**:write a test script to launch the chrome browser, maximize the window, navigate to parent window, get the address of the parent window, locate the hyper link present in the parent window, after clicking on the hyperlink, get the address of the child window, switch to child window and send the keys to all the web elements and then switch back to parent window by passing the parent web page address.
