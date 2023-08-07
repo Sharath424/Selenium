@@ -2,6 +2,11 @@
 
 ![Automation-testing-process](images/selenium.png)
 
+
+
+
+-----
+
 ## Automation Testing Process
 ![Automation-testing-process](images/Automation-testing-process.png)
 
