@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Admin_users.Update_users">
+      <class name="Admin_todos.Update_todos">
         <methods>
           <include name="put_todos_id"/>
         </methods>
-      </class> <!-- Admin_users.Update_users -->
+      </class> <!-- Admin_todos.Update_todos -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

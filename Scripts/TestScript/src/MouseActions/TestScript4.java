@@ -25,6 +25,7 @@ public class TestScript4 {
 		//to type .com in lower case
 		act.keyUp(Keys.SHIFT).build().perform();
 		search.sendKeys(".com");
+		
 		//act.keyDown(Keys.SHIFT).sendKeys("amazon").keyUp(Keys.SHIFT).sendKeys(".com").build().perform();
 
 	}

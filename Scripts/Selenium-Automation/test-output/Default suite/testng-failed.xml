@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TESTNG.amazon">
+      <class name="TESTNG.Skip">
         <methods>
-          <include name="demo"/>
+          <include name="add"/>
         </methods>
-      </class> <!-- TESTNG.amazon -->
+      </class> <!-- TESTNG.Skip -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

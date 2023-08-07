@@ -18,6 +18,7 @@ public class TestScript1 {
 		driver.get("E:\\Automation\\Selenium\\HTML\\Index2.html");
 		//locating and clicking on link1 by using absolute xpath.
 		driver.findElement(By.xpath("/html/body/div[1]/table/tbody/tr/td[1]/a")).click();
+		
 		//locating and clicking on link1 by using relative xpath
 		driver.findElement(By.xpath("//div[1]//td[1]//a")).click();
 		//locating and clicking on link4 by using relative xpath.

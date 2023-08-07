@@ -1,6 +1,7 @@
 package Domstructure;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
@@ -19,9 +20,10 @@ public class TestScript1 {
 		//locate and on click options present in select box by using text () approach of relative xpath
 //		driver.findElement(By.xpath("//option[text()='automation testing']")).click();
 //		//locate and on click options present in select box by using contains () approach of relative xpath
-//		driver.findElement(By.xpath("//option[contains(text(),'m')]")).click();
+		driver.findElement(By.xpath("//option[contains(text(),'m')]")).click();
 //		//locate and click on list three using starts-with approach of relative xpath
-		driver.findElement(By.xpath("//li[starts-with(@value,'th')]")).click();
+	//	WebElement ele=driver.findElement(By.xpath("//li[starts-with(@value,'th')]"));
+	
 		//locate and click on my link using AND approach of relative xpath
 //		driver.findElement(By.xpath("//a[@target='_blank' and @id='anchor']")).click();
 		//locate and click on my link using OR approach of relative xpath

@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class TestScript2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 
 		// launching the browser
@@ -23,8 +23,10 @@ public class TestScript2 {
 		WebElement dragbox = driver.findElement(By.id("draggable"));
 		//locating drop box
 		WebElement dropbox = driver.findElement(By.id("droppable"));
+		Thread.sleep(1000);
 		Actions act = new Actions(driver);
 		//perform click and hold, moveToElement , release action.
+		Thread.sleep(1000);
 		act.clickAndHold(dragbox).moveToElement(dropbox).release().build().perform();
 
 	}

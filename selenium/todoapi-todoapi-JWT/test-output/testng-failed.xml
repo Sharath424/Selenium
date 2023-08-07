@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="SeleniumTestCase.Getting_started">
+      <class name="com.ibm.todoapp.AdminTodos">
         <methods>
-          <include name="simple_get_request"/>
+          <include name="login"/>
         </methods>
-      </class> <!-- SeleniumTestCase.Getting_started -->
+      </class> <!-- com.ibm.todoapp.AdminTodos -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

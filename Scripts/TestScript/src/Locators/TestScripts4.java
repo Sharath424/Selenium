@@ -20,6 +20,7 @@ public class TestScripts4 {
 		//WebElement search = driver.findElement(By.className("gLFyf"));
 		//to send the keys
 		search.sendKeys("git.com");
+		
 	}
 
 }
