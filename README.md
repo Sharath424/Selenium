@@ -10,6 +10,9 @@
 ## Automation Testing Process
 ![Automation-testing-process](images/Automation-testing-process.png)
 
+
+
+-----
 ### Introduction to Selenium Automation Tool
 
 * Selenium automation tool is used to automate only web applications.
